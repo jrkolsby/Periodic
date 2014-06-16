@@ -7,12 +7,30 @@
 //
 
 #import "AppDelegate.h"
+#import "AppDataObject.h"
+#import "ViewController.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+        
+        UIStoryboard *storyBoard;
+        
+        CGSize result = [[UIScreen mainScreen] bounds].size;
+        CGFloat scale = [UIScreen mainScreen].scale;
+        result = CGSizeMake(result.width * scale, result.height * scale);
+        
+        if(result.height == 1136){
+            storyBoard = [UIStoryboard storyboardWithName:@"Five_iPhone" bundle:nil];
+            UIViewController *initViewController = [storyBoard instantiateInitialViewController];
+            [self.window setRootViewController:initViewController];
+        }
+    }
+    
     return YES;
 }
 							
@@ -24,6 +42,16 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    int massNumber = (int)([[AppDataObject sharedInstance].viewController.mathView.massLabel.text floatValue] + 0.5);
+    if (massNumber == 0 || massNumber >= 10000) {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    } else {
+        [[UIApplication sharedApplication] setApplicationIconBadgeNumber:massNumber];
+    }
+    
+    [[AppDataObject sharedInstance].viewController addToHistory];
+
+    
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
