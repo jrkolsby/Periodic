@@ -30,7 +30,6 @@
 		1083A60918677FD100F881D3 /* HistoryLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1083A60818677FD100F881D3 /* HistoryLabel.m */; };
 		10AC386D1839313A000A2C24 /* Element.m in Sources */ = {isa = PBXBuildFile; fileRef = 10AC386C1839313A000A2C24 /* Element.m */; };
 		10D3D22418553B13004EEBDC /* Element-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10D3D22318553B13004EEBDC /* Element-Info.plist */; };
-		10E2B62C1866AA960043C345 /* Five_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 10E2B62A1866AA960043C345 /* Five_iPhone.storyboard */; };
 		10EFBFA1185C07EF004A2557 /* Compound-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 10EFBFA0185C07EF004A2557 /* Compound-Info.plist */; };
 		10F3A2F5185AB4C200404966 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10F3A2F4185AB4C200404966 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
@@ -79,7 +78,6 @@
 		10AC386B1839313A000A2C24 /* Element.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Element.h; sourceTree = "<group>"; };
 		10AC386C1839313A000A2C24 /* Element.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Element.m; sourceTree = "<group>"; };
 		10D3D22318553B13004EEBDC /* Element-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Element-Info.plist"; path = "../Element-Info.plist"; sourceTree = "<group>"; };
-		10E2B62B1866AA960043C345 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Five_iPhone.storyboard; sourceTree = "<group>"; };
 		10EFBFA0185C07EF004A2557 /* Compound-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Compound-Info.plist"; sourceTree = "<group>"; };
 		10F3A2F4185AB4C200404966 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -158,7 +156,6 @@
 				1078C4E418325A52005BEE53 /* AppDelegate.h */,
 				1078C4E518325A52005BEE53 /* AppDelegate.m */,
 				1078C4E718325A52005BEE53 /* Main_iPhone.storyboard */,
-				10E2B62A1866AA960043C345 /* Five_iPhone.storyboard */,
 				1078C4EA18325A52005BEE53 /* Main_iPad.storyboard */,
 				1078C4ED18325A52005BEE53 /* ViewController.h */,
 				1078C4EE18325A52005BEE53 /* ViewController.m */,
@@ -287,7 +284,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1050B51D18484CC800DE1349 /* Compound.otf in Resources */,
-				10E2B62C1866AA960043C345 /* Five_iPhone.storyboard in Resources */,
 				10D3D22418553B13004EEBDC /* Element-Info.plist in Resources */,
 				1050B51C18484CC300DE1349 /* Main.otf in Resources */,
 				10EFBFA1185C07EF004A2557 /* Compound-Info.plist in Resources */,
@@ -375,14 +371,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		10E2B62A1866AA960043C345 /* Five_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				10E2B62B1866AA960043C345 /* Base */,
-			);
-			name = Five_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -464,10 +452,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Periodic/Periodic-Prefix.pch";
 				INFOPLIST_FILE = "Periodic/Periodic-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -479,10 +469,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Periodic/Periodic-Prefix.pch";
 				INFOPLIST_FILE = "Periodic/Periodic-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};

@@ -93,18 +93,20 @@ NSTimer *tutorialTimer;
     };
     
     //Check and execute each stage of the tutorial
+    CGPoint tableOrigin = CGPointMake(self.mainContainer.frame.origin.x+self.tableView.frame.origin.x,
+                                       self.mainContainer.frame.origin.y+self.tableView.frame.origin.y);
     if (!self.hasSelectedElement) {
-        moveTouches(CGPointMake([self.tableView viewWithTag:2].frame.origin.x + self.tableView.frame.origin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
-                                [self.tableView viewWithTag:2].frame.origin.y + self.tableView.frame.origin.y + (([self.tableView viewWithTag:2].frame.size.height - self.fontOne) / 2)),
-                    CGPointMake([self.tableView viewWithTag:2].frame.origin.x + self.tableView.frame.origin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
-                                [self.tableView viewWithTag:2].frame.origin.y + self.tableView.frame.origin.y + (([self.tableView viewWithTag:2].frame.size.height - self.fontOne) / 2)), 1);
+        moveTouches(CGPointMake([self.tableView viewWithTag:2].frame.origin.x + tableOrigin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
+                                [self.tableView viewWithTag:2].frame.origin.y + tableOrigin.y + (([self.tableView viewWithTag:2].frame.size.height - self.fontOne) / 2)),
+                    CGPointMake([self.tableView viewWithTag:2].frame.origin.x + tableOrigin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
+                                [self.tableView viewWithTag:2].frame.origin.y + tableOrigin.y + (([self.tableView viewWithTag:2].frame.size.height - self.fontOne) / 2)), 1);
     } else {
         if (!self.hasDeselectedElement) {
             Element *selectedElement = [[AppDataObject sharedInstance].currentElementArray objectAtIndex:0];
-            moveTouches(CGPointMake(selectedElement.frame.origin.x + self.tableView.frame.origin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
-                                    selectedElement.frame.origin.y + self.tableView.frame.origin.y),
-                        CGPointMake(selectedElement.frame.origin.x + self.tableView.frame.origin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
-                                    100 + selectedElement.frame.origin.y + self.tableView.frame.origin.y), 1);
+            moveTouches(CGPointMake(selectedElement.frame.origin.x + tableOrigin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
+                                    selectedElement.frame.origin.y + tableOrigin.y),
+                        CGPointMake(selectedElement.frame.origin.x + tableOrigin.x + (([self.tableView viewWithTag:2].frame.size.width - self.fontOne) / 2),
+                                    100 + selectedElement.frame.origin.y + tableOrigin.y), 1);
         } else {
             if (!self.hasViewedInfo) {
                 if ([self.mathView.chemicalFormulaLabel.text isEqualToString:@""]) {
@@ -115,10 +117,10 @@ NSTimer *tutorialTimer;
                         [(Element *)[self.tableView viewWithTag:3] elementSelect];
                     }
                 }
-                moveTouches(CGPointMake(self.mathView.frame.origin.x + ((self.mathView.frame.size.width - self.fontOne) / 2),
-                                        self.mathView.frame.origin.y + ((self.mathView.frame.size.height - self.fontOne) / 2)),
-                            CGPointMake(self.mathView.frame.origin.x + ((self.mathView.frame.size.width - self.fontOne) / 2),
-                                        200 + self.mathView.frame.origin.y + ((self.mathView.frame.size.height - self.fontOne) / 2)), 1);
+                moveTouches(CGPointMake(tableOrigin.x + self.mathView.frame.origin.x + ((self.mathView.frame.size.width - self.fontOne) / 2),
+                                        tableOrigin.y + self.mathView.frame.origin.y + ((self.mathView.frame.size.height - self.fontOne) / 2)),
+                            CGPointMake(tableOrigin.x + self.mathView.frame.origin.x + ((self.mathView.frame.size.width - self.fontOne) / 2),
+                                        200 + tableOrigin.y + self.mathView.frame.origin.y + ((self.mathView.frame.size.height - self.fontOne) / 2)), 1);
             } else {
                 if (!self.hasClearedCompound) {
                     moveTouches(CGPointMake((([self view].bounds.size.width - self.fontOne) / 2) - 50,
@@ -214,10 +216,7 @@ NSTimer *tutorialTimer;
                 
                 float percentScrolled = [panGesture translationInView:scrollView].y / self.tableView.frame.size.height;
                 
-                self.mathView.frame = CGRectMake(self.mathView.frame.origin.x,
-                                            self.mathView.frame.origin.y,
-                                            self.mathView.frame.size.width,
-                                            self.mathView.initialHeight + [panGesture translationInView:scrollView].y);
+                self.mathViewHeight.constant = self.mathView.initialHeight + [panGesture translationInView:scrollView].y;
                 self.mathView.shadowLayer.shadowPath = [[UIBezierPath bezierPathWithRect:self.mathView.bounds] CGPath];
                 
                 self.mathView.chemicalInfoLabel.alpha = 2 * percentScrolled;
@@ -252,13 +251,11 @@ NSTimer *tutorialTimer;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    NSLog(@"scrollViewDidEndDragging");
     if (self.mathView.frame.size.height > self.mathView.initialHeight) {
         [UIView animateWithDuration:0.3
                          animations:^{
-                             self.mathView.frame = CGRectMake(self.mathView.frame.origin.x,
-                                                              self.mathView.frame.origin.y,
-                                                              self.mathView.frame.size.width,
-                                                              self.mathView.initialHeight);
+                             self.mathViewHeight.constant = self.mathView.initialHeight;
                              self.mathView.chemicalInfoLabel.alpha = 0;
                              self.mathView.chemicalInfoLabel.frame = CGRectMake(self.mathView.chemicalInfoLabel.frame.origin.x,
                                                                                 self.mathView.chemicalInfoLabelInitialY,

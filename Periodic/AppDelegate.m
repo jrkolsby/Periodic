@@ -16,7 +16,9 @@
 {
     // Override point for customization after application launch.
     
+    /*
     if(UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone){
+
         
         UIStoryboard *storyBoard;
         
@@ -30,6 +32,7 @@
             [self.window setRootViewController:initViewController];
         }
     }
+     */
     
     return YES;
 }

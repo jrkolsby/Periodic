@@ -8,12 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "MathView.h"
+#import "Table.h"
 
 @interface ViewController : UIViewController <UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *tableView;
 @property (weak, nonatomic) IBOutlet MathView *mathView;
 @property (weak, nonatomic) IBOutlet UIView *historyView;
+@property (weak, nonatomic) IBOutlet Table *mainContainer;
+
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *mathViewHeight;
 
 @property (assign) int fontOne;
 @property (assign) int fontTwo;
