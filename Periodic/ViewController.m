@@ -46,10 +46,7 @@ NSTimer *tutorialTimer;
     }
     
     //Hide status bars on iPhones
-    if ([[UIScreen mainScreen] bounds].size.width > 480) {
-        [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-        [[UIApplication sharedApplication] setStatusBarHidden:NO];
-    } else {
+    if ( UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
     }
 }
@@ -251,7 +248,6 @@ NSTimer *tutorialTimer;
 }
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
-    NSLog(@"scrollViewDidEndDragging");
     if (self.mathView.frame.size.height > self.mathView.initialHeight) {
         [UIView animateWithDuration:0.3
                          animations:^{
