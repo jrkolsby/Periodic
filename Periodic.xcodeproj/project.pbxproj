@@ -248,7 +248,7 @@
 		1078C4CA18325A52005BEE53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "James Kolsby";
 				TargetAttributes = {
 					1078C4D118325A52005BEE53 = {
@@ -392,6 +392,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -456,6 +457,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Periodic/Periodic-Prefix.pch";
 				INFOPLIST_FILE = "Periodic/Periodic-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jmkl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -473,6 +475,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Periodic/Periodic-Prefix.pch";
 				INFOPLIST_FILE = "Periodic/Periodic-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jmkl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -496,6 +499,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "PeriodicTests/PeriodicTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jmkl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -514,6 +518,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Periodic/Periodic-Prefix.pch";
 				INFOPLIST_FILE = "PeriodicTests/PeriodicTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "co.jmkl.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
